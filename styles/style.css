@@ -62,6 +62,17 @@
     font-family: "Poppins";
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: var(--color-primary);
+    padding: 10px;
+    text-align: center;
+    color: var(--color-accent);
+}
+
 .navigation {
     display: flex;
     align-items: center;

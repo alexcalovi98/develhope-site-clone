@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <style>
+            input {
+                border-radius: 4px;
+            }
+
+            input::placeholder {
+                color: #283681;
+            }
+
+            input[type=button] {
+                background-color: #283681;
+                color: white;
+                padding: 8px;
+            }
+
+            input[type=button]:hover {
+                background-color: white;
+                color: #283681;
+                cursor: pointer;
+            }
+
+            input[type=text]:disabled {
+                background-color: #283681;
+                color: white;
+            }
+        </style>
+    </head>
     <body>
         <div>
             <img src="../images/develhope.png" alt="Logo di Develhope" width="400">

@@ -9,9 +9,11 @@ console.log("---------------------------")
 
 let studentName = "Felice Russo" //string
 let studentAge = 20 //number
-let isStudentAttending = true //boolean
+let isStudentAttending = false //boolean
+let isStudentAbsent = !isStudentAttending
 
 console.log("The student name is " + studentName + ", has " + studentAge + " years old and is attending: " + isStudentAttending)
+console.log("The student is absent?", isStudentAbsent)
 
 let studentVote
 studentVote = 10
@@ -19,9 +21,9 @@ studentVote = 8
 
 console.log("The student vote is: " + studentVote)
 
-const studentFiscalCode = "FLCRSS021099L378Q"
+const STUDENT_FISCAL_CODE = "FLCRSS021099L378Q"
 // This throws an error, decomment it to try the error in console
-// studentFiscalCode = "YYY"
+// STUDENT_FISCAL_CODE = "YYY"
 
 // WARNING: var is the old way to declare a variable, prefer to use let
 var studentAddress = "Via Rossi 4"
@@ -71,3 +73,15 @@ let firstChar = "A" //ASCII decimal 65
 let secondChar = "a" //ASCII decimal 95
 console.log("Char comparison as a number: ", firstChar >= secondChar)
 
+console.log("---------------------------")
+
+// Logical operators
+// AND (&&): to result true all the conditions must be true
+let isStudentPromoted = isStudentAttending && votesAverage >= 6
+console.log("THE STUDENT IS PROMOTED?", isStudentPromoted)
+
+//OR (||): to result true only one condition must be true
+let hasStudentFailed = !isStudentAttending || isStudentAbsent || votesAverage < 6
+console.log("HAS THE STUDENT FAILED?", hasStudentFailed)
+
+// You can use && and || together wrapping conditions in ()

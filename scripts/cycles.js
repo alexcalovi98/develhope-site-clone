@@ -1,23 +1,23 @@
 // Generate a number between 4 and 10
-const minVote = 4;
-const maxVote = 10;
+const MIN_VOTE = 4;
+const MAX_VOTE = 10;
 
 // while, do-while, for
 let generatedVote
 
 // While
-generatedVote = Math.floor(Math.random() * (maxVote - minVote + 1)) + minVote
-console.log("[OUTSIDE WHILE] The student vote is:", generatedVote);
+generatedVote = randomVote()
+console.log("[OUTSIDE WHILE] The student vote is:", generatedVote)
 while (generatedVote < 6) {
-    console.log("The student vote is INSUFFICIENT");
-    generatedVote = Math.floor(Math.random() * (maxVote - minVote + 1)) + minVote;
-    console.log("[WHILE] The student vote is:", generatedVote);
+    console.log("The student vote is INSUFFICIENT")
+    generatedVote = randomVote()
+    console.log("[WHILE] The student vote is:", generatedVote)
 }
 console.log("The student vote is SUFFICIENT");
 
 // Refactor with do-while
 do {
-    generatedVote = Math.floor(Math.random() * (maxVote - minVote + 1)) + minVote
+    generatedVote = randomVote()
     console.log("[DO WHILE] The student vote is:", generatedVote)
     if (generatedVote < 6) {
         console.log("The student vote is INSUFFICIENT")
@@ -46,4 +46,9 @@ for (let startingVideo = 1; startingVideo <= totalVideos; startingVideo++) {
 
 if (viewedVideos == totalVideos) {
     console.log("Unit completed, viewed all videos\n")
+}
+
+function randomVote(min = MIN_VOTE, max = MAX_VOTE) {
+    console.log("Calling randomVote with min=" + min + " and max=" + max)
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }

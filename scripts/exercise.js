@@ -33,9 +33,10 @@ let mobileStudents = searchByCourse(students, "Mobile Development")
 console.log("Students attending Mobile Development Course: ", mobileStudents)
 
 console.log("---------------------------")
+
 // ESERCIZIO 4
 let mediaVoti = mediaAcademy(students)
-console.log("La media è," , mediaVoti)
+console.log("La media è:" , mediaVoti)
 
 console.log("---------------------------")
 
@@ -97,15 +98,11 @@ function mediaAcademy(students){
 
 // ESERCIZIO 5
 
-function iscriviStudente(name, age, course, avg) {
-    let newStudent= {
-        nome: name,
-        age: age,
-        course: course,
-        avg: avg,
-    }
+function iscriviStudente(students, name, age, course, avg) {
+    let newStudent= new ExerciseStudent(name, age, course, avg)
     students.push(newStudent)
-    
-    console.log(students)
-} 
-iscriviStudente("Mario Rossi", 26, "Web Development", 75)
+    return students;
+}
+
+let updatedStudents = iscriviStudente(students, "Mario Rossi", 26, "Web Development", 75)
+console.log(updatedStudents)

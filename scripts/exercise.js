@@ -32,6 +32,15 @@ console.log("---------------------------")
 let mobileStudents = searchByCourse(students, "Mobile Development")
 console.log("Students attending Mobile Development Course: ", mobileStudents)
 
+console.log("---------------------------")
+// ESERCIZIO 4
+let mediaVoti = mediaAcademy(students)
+console.log("La media è," , mediaVoti)
+
+console.log("---------------------------")
+
+// ESERCIZIO 5
+
 function getPromoted(students, threashold) {
     console.log("Threashold is:", threashold)
     
@@ -73,4 +82,30 @@ function ExerciseStudent(name, age, course, avg) {
     this.age = age;
     this.course = course;
     this.avg = avg;
+} 
+
+// ESERCIZIO 4
+function mediaAcademy(students){
+    let somma = 0;
+    for (let i = 0; i < students.length; i++) {
+        let student = students[i];
+        somma += student.avg
+    }
+    let media = somma / students.length
+    return Math.round(media * 10)/10;
 }
+
+// ESERCIZIO 5
+
+function iscriviStudente(name, age, course, avg) {
+    let newStudent= {
+        nome: name,
+        age: age,
+        course: course,
+        avg: avg,
+    }
+    students.push(newStudent)
+    
+    console.log(students)
+} 
+iscriviStudente("Mario Rossi", 26, "Web Development", 75)

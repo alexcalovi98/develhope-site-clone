@@ -9,32 +9,41 @@ function Quiz(questions = [], timeLimitMs = DEFAULT_TIME_LIMIT) {
     
     this.start = () => {
         this.timerId = setInterval(() => {
-            this.timeLimitMs = this.timeLimitMs - 1000
+            this.timeLimitMs = this.timeLimitMs - 1000 // -1s
             console.log("Quiz remaining seconds", this.remainingTimeInSeconds())
 
             if (this.timeLimitMs === 0) { //clear interval if the time is finished, we don't want negative numbers
                 clearInterval(this.timerId)
                 this.timerId = null;
+                console.log("\n---INTERVAL END---")
+                console.log(Date(), "\n")
             }
 
         }, 1000) //start the countdown
     }
 
-    this.isStarted = () => this.timerId !== null //the quiz is started if there is an id (set in start method)
+    this.isOngoing = () => this.timerId !== null //the quiz is started if there is an id (set in start method)
 
     this.remainingTimeInSeconds = () => this.timeLimitMs / 1000
 }
 
 const quiz = new Quiz()
 
-console.log("Quiz started?", quiz.isStarted())
+console.log("Quiz is ongoing?", quiz.isOngoing())
 
 console.log("Quiz remaining seconds", quiz.remainingTimeInSeconds())
 
-console.log("\n---QUIZ START---\n")
+console.log("\n---QUIZ START---")
+console.log(Date(), "\n")
 
 quiz.start()
 
-console.log("Quiz started?", quiz.isStarted())
+console.log("Quiz ongoing?", quiz.isOngoing())
 
 console.log("Quiz remaining seconds", quiz.remainingTimeInSeconds())
+
+setTimeout(() => {
+    console.log("\n---AFTER 15 SECONDS---")
+    console.log(Date())
+    console.log("Quiz ongoing?", quiz.isOngoing())
+}, 15000)

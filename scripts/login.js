@@ -26,7 +26,7 @@ console.log("Test")
 function login(username, password) {
     return new Promise((resolve, reject) => {
         if (username === "alex.calovi@develhope.co" && password === "DVHPassword21!") {
-            setTimeout(() => resolve({ name: "Alex", surname: "Calovi" }), 5000)
+            setTimeout(() => resolve({ name: "Alex", surname: "Calovi" }), 2000)
         } else {
             reject("Credentials are not correct")
         }
@@ -39,3 +39,34 @@ function login(username, password) {
 // 3 ...
 // 4 ...
 // ...
+
+let insertedUsername = ""
+let insertedPassword = ""
+
+document.addEventListener("DOMContentLoaded", function () {
+    let emailInput = document.querySelector("[name=email]")
+    let passwordInput = document.querySelector("[name=password]")
+    let loginButton = document.querySelector(".submit-btn")
+
+    emailInput.addEventListener('keyup', (event) => {
+        insertedUsername = event.target.value
+        loginButton.disabled = !isButtonEnabled()
+    })
+
+    passwordInput.addEventListener('keyup', (event) => {
+        insertedPassword = event.target.value
+        loginButton.disabled = !isButtonEnabled()
+    })
+
+    loginButton.addEventListener('click', () => {
+        performLogin()
+    })
+
+    console.log(loginButton)
+});
+
+let performLogin = () => login(insertedUsername, insertedPassword)
+        .then(() => window.location.href = "area.html")
+        .catch(() => alert("Wrong credentials"))
+
+let isButtonEnabled = () => insertedUsername.length >= 8 && insertedPassword.length >= 8;

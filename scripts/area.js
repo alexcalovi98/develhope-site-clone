@@ -1,18 +1,13 @@
-let user = {
-    name: "Alex",
-    surname: "Calovi",
-    stats: [
-        { value: 3.75, maxValue: 5, label: "Media voti esercizi"},
-        { value: 80, maxValue: 100, label: "Media voti test"},
-        { value: 2, maxValue: 460, label: "Esercizi completati"},
-        { value: 10, maxValue: 20, label: "Lezioni frequentate"},
-    ]
-}
+import { navigateTo, LOGIN_ROUTE } from "./utility/navigation.js"
+import { getUserFromLocalStorage, removeUserFromLocalStorage } from "./data/user_service.js"
+
+let user = getUserFromLocalStorage()
 
 document.addEventListener("DOMContentLoaded", function () {
     // here we are sure that the HTML (DOM) is fully loaded
     renderName()
     renderStats()
+    listenLogoutButton()
 });
 
 function renderName() {
@@ -34,5 +29,13 @@ function renderStats() {
         </div>`
 
         userStatsContainer.innerHTML += newHtmlStat
+    })
+}
+
+function listenLogoutButton() {
+    let logoutButton = document.querySelector(".logout-button")
+    logoutButton.addEventListener('click', () => {
+        removeUserFromLocalStorage()
+        navigateTo(LOGIN_ROUTE)
     })
 }

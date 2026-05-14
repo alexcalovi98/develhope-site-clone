@@ -1,47 +1,12 @@
-// login(username, password) -> Promise (a buon fine oppure NON a buon fine)
-// se le credenziali corrispondono a alex.calovi@develhope.co e DVHPassword21!
-// la promise va risolta in maniera positiva restituendo un oggetto con nome e cognome dell'utente (Alex Calovi)
-// altrimenti un errore
-
-// login("alex.calovi@develhope.co", "DVHPassword21!")
-//     .then(result => console.log(result))
-//     .catch(error => console.log(error))
-//     .finally(() => console.log("Finally!"))
-
-// async/await
-
-tryLogin()
-
-async function tryLogin() {
-    try {
-        let result = await login("alex.calovi@develhope.co", "DVHPassword21!")
-        console.log(result)
-    } catch(e) {
-        console.log(e)
-    }
-}
-
-console.log("Test")
-
-function login(username, password) {
-    return new Promise((resolve, reject) => {
-        if (username === "alex.calovi@develhope.co" && password === "DVHPassword21!") {
-            setTimeout(() => resolve({ name: "Alex", surname: "Calovi" }), 2000)
-        } else {
-            reject("Credentials are not correct")
-        }
-    })
-}
-
-//DB
-// 1 alex.calovi@develhope.co DVHPassword21!
-// 2 luca.verdi@develhope.co password1234!
-// 3 ...
-// 4 ...
-// ...
+import { navigateTo, PRIVATE_AREA_ROUTE } from "./utility/navigation.js"
+import { users } from "./data/users.js"
+import { saveUserInLocalStorage, isUserPresentInLocalStorage } from "./data/user_service.js"
 
 let insertedUsername = ""
 let insertedPassword = ""
+
+// AT THE START OF THE SCRIPT
+checkIfUserIsLoggedIn()
 
 document.addEventListener("DOMContentLoaded", function () {
     let emailInput = document.querySelector("[name=email]")
@@ -61,12 +26,31 @@ document.addEventListener("DOMContentLoaded", function () {
     loginButton.addEventListener('click', () => {
         performLogin()
     })
-
-    console.log(loginButton)
 });
 
 let performLogin = () => login(insertedUsername, insertedPassword)
-        .then(() => window.location.href = "area.html")
+        .then((user) => {
+            saveUserInLocalStorage(user)
+            navigateTo(PRIVATE_AREA_ROUTE)
+        })
         .catch(() => alert("Wrong credentials"))
 
 let isButtonEnabled = () => insertedUsername.length >= 8 && insertedPassword.length >= 8;
+
+
+// FUNCTIONS
+function checkIfUserIsLoggedIn() {
+    if (isUserPresentInLocalStorage()) navigateTo(PRIVATE_AREA_ROUTE)
+}
+
+function login(username, password) {
+    return new Promise((resolve, reject) => {
+        let user = users.find((user) => user.username === username && user.password === password)
+        if (user !== undefined) {
+            delete user.password
+            setTimeout(() => resolve(user), 2000)
+        } else {
+            reject("Credentials are not correct")
+        }
+    })
+}

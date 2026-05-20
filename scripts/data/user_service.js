@@ -1,18 +1,18 @@
-const USER_STORAGE_KEY = "user"
+import { getAccessTokenFromLocalStorage } from "./auth_service.js"
 
-export function getUserFromLocalStorage() {
-    return JSON.parse(localStorage.getItem(USER_STORAGE_KEY))
-}
+const API_URL = "http://localhost:8000/api"
 
-export function saveUserInLocalStorage(user) {
-    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user))
-}
-
-export function isUserPresentInLocalStorage() {
-    return localStorage.getItem(USER_STORAGE_KEY)
-}
-
-export  function removeUserFromLocalStorage() {
-    //localStorage.clear()
-    localStorage.removeItem(USER_STORAGE_KEY)
+export function getUser() {
+    return fetch(API_URL + "/me", {
+        headers: {
+            "Authorization": "Bearer " + getAccessTokenFromLocalStorage().access_token
+        }
+    })
+    .then((response) => response.json())
+    .then((json) => {
+        return {
+            name: json.nome,
+            surname: json.cognome
+        }
+    })
 }

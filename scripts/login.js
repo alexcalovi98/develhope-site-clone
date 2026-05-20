@@ -1,6 +1,7 @@
 import { navigateTo, PRIVATE_AREA_ROUTE } from "./utility/navigation.js"
 import { users } from "./data/users.js"
-import { saveUserInLocalStorage, isUserPresentInLocalStorage } from "./data/user_service.js"
+import { isAccessTokenPresentInLocalStorage } from "./data/auth_service.js"
+import { login } from './data/auth_service.js'
 
 let insertedUsername = ""
 let insertedPassword = ""
@@ -30,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let performLogin = () => login(insertedUsername, insertedPassword)
         .then((user) => {
-            saveUserInLocalStorage(user)
             navigateTo(PRIVATE_AREA_ROUTE)
         })
         .catch(() => alert("Wrong credentials"))
@@ -40,17 +40,5 @@ let isButtonEnabled = () => insertedUsername.length >= 8 && insertedPassword.len
 
 // FUNCTIONS
 function checkIfUserIsLoggedIn() {
-    if (isUserPresentInLocalStorage()) navigateTo(PRIVATE_AREA_ROUTE)
-}
-
-function login(username, password) {
-    return new Promise((resolve, reject) => {
-        let user = users.find((user) => user.username === username && user.password === password)
-        if (user !== undefined) {
-            delete user.password
-            setTimeout(() => resolve(user), 2000)
-        } else {
-            reject("Credentials are not correct")
-        }
-    })
+    if (isAccessTokenPresentInLocalStorage()) navigateTo(PRIVATE_AREA_ROUTE)
 }

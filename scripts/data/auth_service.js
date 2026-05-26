@@ -1,5 +1,5 @@
 const ACCESS_TOKEN_KEY = "access_token"
-const API_URL = "http://localhost:8000/api"
+const API_URL = " https://develhope.alexcalovi.dev/api"
 
 export function getAccessTokenFromLocalStorage() {
     return JSON.parse(localStorage.getItem(ACCESS_TOKEN_KEY))

@@ -13,7 +13,7 @@ export const users = [
     },
     {
         name: "Rosario",
-        surname: "Florida",
+        surname: "Floridia",
         username: "rosario.florida@develhope.co",
         password: "password1234!",
         stats: [
@@ -36,4 +36,3 @@ export const users = [
         ]
     }
 ]
-

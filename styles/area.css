@@ -29,3 +29,115 @@
     padding-left: 100px;
     color: var(--color-primary);
 }
+
+/* Styling  I miei Corsi*/
+.corsi {
+    margin: 24px 300px 0px 300px;
+}
+
+.user-title-courses {
+    color: var(--color-primary);
+    font-size: 24px;
+}
+
+.user-stats-courses{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.user-courses__card{
+    background:linear-gradient(97deg, #283681 -1.56%, #0d5f85 123.28%);
+    color: var(--color-accent);
+    width: 500px;
+    height: 248px;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.user-courses__card-stats{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+    row-gap: 10px;
+    margin: 17px 0px;
+    padding: 6px 12px;
+    background-color: rgba(255, 255, 255, 0.06);
+    width: fit-content;
+    border-radius: 15px;
+}
+
+.user-courses__card-stats__top{
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+}
+
+.user-courses__card-stats__bottom{
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+    align-items: center;
+}
+
+.user-courses__card-stats__value{
+    display: flex;
+    flex-direction: row;
+    align-items: center !important;
+    font-size: 14px;
+}
+.course-img{
+    margin-right: 5px;
+}
+
+.user-courses__card-stats__img{
+    margin-top:  10px;
+}
+.user-courses__card-footer-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    
+}
+
+.card-btn{
+    width: 200px;
+    height: 44px;
+    cursor: pointer;
+    background-color: rgb(3, 95, 28);
+    color: var(--color-accent);
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 15px;
+    font-family: "Poppins";
+}
+.progress-container{
+    flex: 1;
+}
+.progress-bar {
+  height: 6px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: #8b00ff;
+  border-radius: 10px;
+  position: relative;
+}
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 0;
+  height: 100%;
+  width: 20px;
+  background: white;
+  transform: skewX(-35deg);
+}

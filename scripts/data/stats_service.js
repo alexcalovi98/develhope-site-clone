@@ -1,9 +1,9 @@
 import { getAccessTokenFromLocalStorage } from "./auth_service.js"
 
-const API_URL = "http://localhost:8000/api"
+const API_URL = "https://develhope.alexcalovi.dev"
 
 export function getStats() {
-    return fetch(API_URL + "/statistics", {
+    return fetch(API_URL + "/api/statistics", {
             headers: {
                 "Authorization": "Bearer " + getAccessTokenFromLocalStorage().access_token
             }

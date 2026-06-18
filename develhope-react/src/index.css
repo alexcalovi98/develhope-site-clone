@@ -1,0 +1,26 @@
+:root {
+    --color-primary: #283681;
+    --color-accent: #ffffff;
+    --container-margin: 100px;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.container-full-width {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins";
+}

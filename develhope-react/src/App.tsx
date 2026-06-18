@@ -1,11 +1,13 @@
-import { HelloWorld } from './components/HelloWorld'
+import { HomePage } from "./components/home-page/HomePage"
 
 function App() {
   return (
     <>
-    <HelloWorld name="Alex" surname="Calovi" course="Mobile Development"/>
-    <HelloWorld name="Rosario" surname="Floridia" age={27}/>
-    <HelloWorld name="Federico Maria" surname="Calato" age={23}/>
+    <div className="container-full-width">
+      <div className="container full-width">
+        <HomePage />
+      </div>
+    </div>
     </>
   )
 }

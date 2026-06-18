@@ -5,7 +5,7 @@ export function HomePage() {
     return (
         <>
         <HomeBanner />
-        <Header />
+        <Header home={true} />
         {/* <HelloWorld name="Alex" surname="Calovi" course="Mobile Development"/>
         <HelloWorld name="Rosario" surname="Floridia" age={27}/>
         <HelloWorld name="Federico Maria" surname="Calato" age={23}/> */}

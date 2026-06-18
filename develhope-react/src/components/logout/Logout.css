@@ -1,0 +1,5 @@
+.logout-button {
+    cursor: pointer;
+    padding-left: 100px;
+    color: var(--color-primary);
+}

@@ -1,17 +1,20 @@
+import { Logo } from '../logo/Logo';
+import { Logout } from '../logout/Logout';
 import { Nav } from "../nav/Nav";
 import { RegistrationButton } from "../registration-button/RegistrationButton";
-import develhopeLogo from '../../assets/develhope.png'
 import "./Header.css";
 
-export function Header() {
+type HeaderProps = {
+    home?: boolean
+}
+
+export function Header({ home = true }: HeaderProps) {
     return (
-        <>
         <div className="header">
-            <img className="logo-desktop" src={develhopeLogo} alt="Logo di Develhope" width="200" />
-            {/* <img className="logo-mobile" src="images/develhope_icon.png" alt="Logo di Develhope" width="35" />*/}
-            <Nav />
-            <RegistrationButton />
+            <Logo />
+            { home && <Nav /> }
+            { home && <RegistrationButton /> }
+            { !home && <Logout />}
         </div>
-        </>
     )
 }

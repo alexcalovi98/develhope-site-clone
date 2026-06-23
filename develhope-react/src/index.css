@@ -24,3 +24,7 @@ body {
     flex-direction: column;
     font-family: "Poppins";
 }
+
+.underlined {
+    text-decoration: underline;
+}

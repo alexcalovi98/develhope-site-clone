@@ -1,3 +1,4 @@
+import { Countdown } from '../countdown/Countdown';
 import { Logo } from '../logo/Logo';
 import { Logout } from '../logout/Logout';
 import { Nav } from "../nav/Nav";
@@ -14,6 +15,7 @@ export function Header({ home = true }: HeaderProps) {
             <Logo />
             { home && <Nav /> }
             { home && <RegistrationButton /> }
+            { home && <Countdown /> }
             { !home && <Logout />}
         </div>
     )

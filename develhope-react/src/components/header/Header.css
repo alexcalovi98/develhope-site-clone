@@ -11,5 +11,6 @@
         color: var(--color-primary);
         font-weight: bold;
         margin: 0 10px;
+        cursor: pointer;
     }
 }

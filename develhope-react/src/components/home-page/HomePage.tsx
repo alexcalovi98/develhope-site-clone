@@ -2,6 +2,8 @@ import { CourseCard } from "../course-card/CourseCard"
 import { Header } from "../header/Header"
 import { HomeBanner } from "../home-banner/HomeBanner"
 
+import courseCardTop from "../../assets/card-top-1.png";
+
 export function HomePage() {
     const coursesBulletPoints = ["100% Online", "Inizia e studia quando vuoi"]
     const now = new Date()
@@ -11,7 +13,7 @@ export function HomePage() {
         <HomeBanner />
         <Header home={true} />
         <CourseCard
-            image=""
+            image={courseCardTop}
             title="Corso Live AI-Powered"
             bulletPoints={coursesBulletPoints}
             nextClass={now}

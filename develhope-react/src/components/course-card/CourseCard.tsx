@@ -21,7 +21,7 @@ export function CourseCard({ image, title, bulletPoints, nextClass, discoverUrl 
                     <li>{bulletPoints[1]}</li>
                 </ul>
                 <div className="next-class">Prossima classe: {formattedNextClassDate}</div>
-                <button>
+                <button onClick={() => window.location.href = discoverUrl}>
                     <span>Scopri di più</span>
                 </button>
             </div>

@@ -1,6 +1,6 @@
-import { CourseCard } from "../course-card/CourseCard"
-import { Header } from "../header/Header"
-import { HomeBanner } from "../home-banner/HomeBanner"
+import { CourseCard } from "../../features/home/course-card/CourseCard"
+import { Header } from "../../components/header/Header"
+import { HomeBanner } from "../../features/home/home-banner/HomeBanner"
 
 import courseCardTop from "../../assets/card-top-1.png";
 

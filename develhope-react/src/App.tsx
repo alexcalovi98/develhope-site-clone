@@ -1,11 +1,13 @@
-import { HomePage } from "./components/home-page/HomePage"
+import { AreaPage } from "./pages/area-page/AreaPage"
+import { HomePage } from "./pages/home-page/HomePage"
 
 function App() {
   return (
     <>
     <div className="container-full-width">
       <div className="container full-width">
-        <HomePage />
+        {/* <HomePage /> */}
+        <AreaPage />
       </div>
     </div>
     </>

@@ -1,9 +1,6 @@
 import { useState } from "react"
-
-type MenuItem = {
-    label: string;
-    id: string;
-}
+import type { MenuItem } from "../../types/menu-item"
+import { NavItem } from "./NavItem"
 
 export function Nav() {
     const [selected, setSelected] = useState("home")
@@ -16,18 +13,17 @@ export function Nav() {
     ]
 
     return (
-        <>
         <nav>
             {
-                menu.map(item =>
-                    <a 
+                menu.map(item => 
+                    <NavItem
                         key={item.id}
-                        className={selected === item.id ? "underlined" : "" }
-                        onClick={() => setSelected(item.id)}>{item.label}
-                    </a>
+                        item={item}
+                        selected={selected}
+                        itemClicked={() => setSelected(item.id)}
+                    />
                 )
             }
         </nav>
-        </>
     )
 }

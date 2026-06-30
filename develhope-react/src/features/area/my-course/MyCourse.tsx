@@ -1,14 +1,12 @@
-import status from  '../../../assets/status.svg'
-import video from  '../../../assets/video.svg'
-import code from  '../../../assets/code.svg'
+import { courseStatusIcon, courseCodeIcon, courseVideoIcon } from '../../../utils/ImageUtil'
 
 type MyCourseProps = {
-label: string, 
-videosNumber: number, 
-completedExercises: number
-maxExercises: number,
-courseStart: string,
-completedPercentage: number
+    label: string,
+    videosNumber: number, 
+    completedExercises: number
+    maxExercises: number,
+    courseStart: string,
+    completedPercentage: number
 }
 
 export function MyCourse  ({label, videosNumber, completedExercises, maxExercises, courseStart, completedPercentage } : MyCourseProps ) {
@@ -20,18 +18,18 @@ export function MyCourse  ({label, videosNumber, completedExercises, maxExercise
             <div className="user-courses__card-stats">
                 <div className="user-courses__card-stats__top">
                     <div className="user-courses__card-stats__value">
-                        <img className='course-img' src={video} width="18" height= "18" /> 
+                        <img className='course-img' src={courseVideoIcon} width="18" height= "18" /> 
                         <span className="span-stats">{videosNumber} video</span>
                     </div>
                     <div className="user-courses__card-stats__value">
-                        <img className='course-img' src={code} width="18" height= "18" /> 
+                        <img className='course-img' src={courseCodeIcon} width="18" height= "18" /> 
                         <span className="span-stats">{completedExercises}/{maxExercises} esercizi</span>
                     </div>
                 </div>    
                 <div className="user-courses__card-stats__bottom">  
                     <div className="user-courses__card-stats__value">  
                         
-                           <img className='course-img' src={status} width="18" height= "18" /> 
+                           <img className='course-img' src={courseStatusIcon} width="18" height= "18" /> 
                             <span className="span-stats">Iniziato: {courseStart}</span>
                         
                     </div>

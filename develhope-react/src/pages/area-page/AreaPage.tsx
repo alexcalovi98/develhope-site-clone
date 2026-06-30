@@ -1,6 +1,10 @@
 import { Header } from "../../components/header/Header";
 import { AreaRecap } from "../../features/area/area-recap/AreaRecap";
+import { MyCourse } from "../../features/area/my-course/MyCourse";
 import type { UserStats } from "../../types/user-stats";
+import "./AreaPage.css";
+
+
 
 export function AreaPage() {
     const userStats: UserStats[] = [
@@ -13,6 +17,8 @@ export function AreaPage() {
         <Header home={false} />
         <br /><br />
         <AreaRecap name="Alex Calovi" stats={userStats}/>
+        <MyCourse label="Full Stack Developer" videosNumber={42} completedExercises={20} maxExercises= {24} completedPercentage={75} courseStart="2025-11-18"/>
         </>
+
     )
 }

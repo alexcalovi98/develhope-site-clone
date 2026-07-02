@@ -1,15 +1,16 @@
+import axios from "axios"
 import type { UserStats } from "../types/user-stats.js"
 import { getAccessTokenFromLocalStorage } from "./auth_service.ts"
 
 const API_URL = "https://develhope.alexcalovi.dev"
 
 export function getStats(): Promise<UserStats[]> {
-    return fetch(API_URL + "/api/statistics", {
+    return axios.get(API_URL + "/api/statistics", {
             headers: {
                 "Authorization": "Bearer " + getAccessTokenFromLocalStorage().accessToken
             }
         })
-        .then((response) => response.json())
+        .then((response) => response.data)
         .then((json) => {
             return [
                 { label: "Media voti esercizi", value: json.media_voti_esercizi, maxValue: json.media_voti_esercizi_max },

@@ -1,3 +1,4 @@
+import axios from "axios"
 import type { AccessToken } from "../types/access-token"
 
 const ACCESS_TOKEN_KEY: string = "access_token"
@@ -21,20 +22,11 @@ export function removeAccessTokenFromLocalStorage() {
 }
 
 export function login(username: string, password: string): Promise<void> {
-    return fetch(API_URL + "/api/auth/login", {
-        method: "POST",
-        body: JSON.stringify({
-            email: username,
-            password: password
-        })
+    return axios.post(API_URL + "/api/auth/login", {
+        email: username,
+        password: password
     })
-    .then((response) => {
-        if (response.ok) {
-            return response.json()
-        } else {
-            throw new Error("Wrong credentials")
-        }
-    })
+    .then((response) => response.data)
     .then((json) => {
         saveAccessTokenInLocalStorage({
             accessToken: json.access_token,

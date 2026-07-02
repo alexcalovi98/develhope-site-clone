@@ -1,5 +1,6 @@
 import { type BaseSyntheticEvent } from "react";
 import { Logo } from "../../components/logo/Logo";
+import { login } from "../../services/auth_service";
 import "./LoginPage.css";
 
 export function LoginPage() {
@@ -9,10 +10,15 @@ export function LoginPage() {
 
         const formData = new FormData(event.target)
 
-        console.log("Username", formData.get("email"))
-        console.log("Password", formData.get("password"))
+        const username = formData.get("email") as string;
+        const password = formData.get("password") as string;
 
-        // TODO call API to perform login
+        login(username, password)
+            .then(() => {
+                console.log("Login success")
+                // TODO Navigate to private area
+            })
+            .catch(err => console.error("Login failure", err))
     }
 
     return (

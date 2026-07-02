@@ -13,8 +13,8 @@ export function AreaRecap({ name, stats = [] }: AreaRecapProps) {
             <br/><br/>
             <div className="user-stats-container">
                 {
-                    stats.map(stat =>
-                        <div className="user-stats">
+                    stats.map((stat, index) =>
+                        <div className="user-stats" key={index}>
                             <span>{stat.value}/{stat.maxValue}</span>
                             <br/>
                             <span>{stat.label}</span>

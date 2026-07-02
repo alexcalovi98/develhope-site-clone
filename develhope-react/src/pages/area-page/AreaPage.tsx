@@ -1,32 +1,20 @@
-import { useEffect, useState } from "react";
 import { Header } from "../../components/header/Header";
 import { AreaRecap } from "../../features/area/area-recap/AreaRecap";
 import { MyCourse } from "../../features/area/my-course/MyCourse";
-import type { UserStats } from "../../types/user-stats";
-import { getUser } from "../../services/user_service";
+import { useArea } from "../../hooks/useArea";
 import "./AreaPage.css";
-import { getStats } from "../../services/stats_service";
-import { getCourse } from "../../services/courses_service";
-import type { Course } from "../../types/course";
 
 export function AreaPage() {
-    const [fullname, setFullname] = useState("")
-    const [stats, setStats] = useState<UserStats[]>([])
-    const [courses, setCourses] = useState<Course[]>([])
 
-    useEffect(() => {
-        getUser().then(user => setFullname(user.name + " " + user.surname))
-        getStats().then(stats => setStats(stats))
-        getCourse().then(courses => setCourses(courses))
-    }, [])
+    const [ area ] = useArea()
 
     return (
         <>
         <Header home={false} />
         <br /><br />
-        <AreaRecap name={fullname} stats={stats}/>
+        <AreaRecap name={area.fullname} stats={area.stats}/>
         {
-            courses.map(course => 
+            area.courses.map(course => 
                 <MyCourse
                     key={course.id}
                     label={course.label}
@@ -38,6 +26,5 @@ export function AreaPage() {
             )
         }
         </>
-
     )
 }

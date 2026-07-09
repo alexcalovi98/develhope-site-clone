@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import { courseStatusIcon, courseCodeIcon, courseVideoIcon } from '../../../utils/ImageUtil'
+import { UserFullNameContext } from '../../../pages/area-page/AreaPage'
 
 type MyCourseProps = {
     label: string,
@@ -10,6 +12,7 @@ type MyCourseProps = {
 }
 
 export function MyCourse  ({label, videosNumber, completedExercises, maxExercises, courseStart, completedPercentage } : MyCourseProps ) {
+    const fullName = useContext(UserFullNameContext)
 
     return (
        
@@ -44,7 +47,8 @@ export function MyCourse  ({label, videosNumber, completedExercises, maxExercise
                     </div>
                 <button className ="card-btn">Continua Corso</button>
                 </div>
-                </div>
+                <div style={{fontSize: "10px"}}>Hey {fullName}! Stai andando bene!</div>
+            </div>
             
         
     )

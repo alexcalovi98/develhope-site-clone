@@ -2,14 +2,20 @@ import { createContext } from "react";
 import { Header } from "../../components/header/Header";
 import { AreaRecap } from "../../features/area/area-recap/AreaRecap";
 import { MyCourse } from "../../features/area/my-course/MyCourse";
-import { useArea } from "../../hooks/useArea";
 import "./AreaPage.css";
+import { useAppSelector } from "../../store/store";
+import { Chatbot } from "../../features/area/chatbot/Chatbot";
+import { useDispatch } from "react-redux";
+import { areaState } from '../../store/area.state';
 
 export const UserFullNameContext = createContext("");
 
 export function AreaPage() {
 
-    const [ area ] = useArea()
+    const area = useAppSelector(state => state.area)
+    console.log(area)
+
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -29,6 +35,7 @@ export function AreaPage() {
                         courseStart={course.start} />
                 )
             }
+            <Chatbot open={area.isChatbotOpen} onClick={() => {dispatch(areaState.actions.toggleChatbot())}}></Chatbot>
         </UserFullNameContext.Provider>
         </>
     )

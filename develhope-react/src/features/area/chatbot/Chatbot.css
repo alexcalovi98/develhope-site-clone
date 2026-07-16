@@ -1,0 +1,36 @@
+.chatbot-container {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.chatbot-button {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: var(--color-primary);
+    text-align: center;
+    cursor: pointer;
+}
+
+.chatbot-window {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    border: 1px solid lightgray;
+    border-radius: 50px;
+    background-color: white;
+    align-items: center;
+    justify-content: center
+}
+
+.chatbot-button svg {
+    width: 25px;
+    margin: auto;
+    fill: var(--color-accent)
+}

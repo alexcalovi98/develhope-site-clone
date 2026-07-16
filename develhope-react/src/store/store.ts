@@ -15,3 +15,5 @@ export const store = configureStore({
 })
 
 export const useAppSelector = useSelector as TypedUseSelectorHook<RootState>
+
+export type AppDispatch = typeof store.dispatch

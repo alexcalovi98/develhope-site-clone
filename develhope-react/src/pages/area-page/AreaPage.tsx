@@ -13,7 +13,6 @@ export const UserFullNameContext = createContext("");
 export function AreaPage() {
 
     const area = useAppSelector(state => state.area)
-    console.log(area)
 
     const dispatch = useDispatch()
 

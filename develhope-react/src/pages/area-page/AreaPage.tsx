@@ -1,12 +1,12 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { Header } from "../../components/header/Header";
 import { AreaRecap } from "../../features/area/area-recap/AreaRecap";
 import { MyCourse } from "../../features/area/my-course/MyCourse";
 import "./AreaPage.css";
-import { useAppSelector } from "../../store/store";
+import { useAppSelector, type AppDispatch } from "../../store/store";
 import { Chatbot } from "../../features/area/chatbot/Chatbot";
 import { useDispatch } from "react-redux";
-import { areaState } from '../../store/area.state';
+import { areaState, fetchArea } from '../../store/area.state';
 
 export const UserFullNameContext = createContext("");
 
@@ -14,7 +14,11 @@ export function AreaPage() {
 
     const area = useAppSelector(state => state.area)
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
+
+    useEffect(() => {
+        dispatch(fetchArea())
+    }, [])
 
     return (
         <>
